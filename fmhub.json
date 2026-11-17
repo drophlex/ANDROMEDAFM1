@@ -2,10 +2,10 @@
   "what": "An ambient instrument. ALIGN writes a whole 4-track piece in one of 13 moods, always in key; AUTO keeps it growing from your own pattern. SKY macros, a three-head SPACE TAPE echo with spring, and visions drawn from the music: cymatics, harmonograph, attractor and orrery.",
   "author": "Polaris Sound Lab",
   "kinds": [
-    "synth"
+    "groove"
   ],
   "play": "https://drophlex.github.io/ANDROMEDA/",
-  "cheat": "https://github.com/drophlex/ANDROMEDAFM1/blob/main/manual/ANDROMEDA-FM1-Manual-EN-ES.pdf",
+  "cheat": "https://github.com/drophlex/ANDROMEDAFM1/blob/main/manual/ANDROMEDA-FM1-Manual-EN.pdf",
   "image": "docs/images/fmhub-card.png",
   "color": "#C98A55",
   "sounds": "CC0: Versilian Studios VSCO-2 Community Edition and VCSL samples (piano, flute, sax, kept from Felucca); the ambient presets and the FM voice bank are own"
