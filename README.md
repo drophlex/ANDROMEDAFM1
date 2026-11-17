@@ -50,7 +50,7 @@ Also: 6 new ambient sounds on ANALOG (POLAR PAD, PWM DREAM, GLASS PAD, WARM PULS
 ## Build it
 
 The firmware is built by GitHub Actions ([`.github/workflows/build.yml`](.github/workflows/build.yml)) on every change: the
-JieLi toolchain, three files of the AC79 SDK, `firmware-src/build.sh --release 1.8.2-an1 --identity FM-1_947`, the host tests
+JieLi toolchain, three files of the AC79 SDK, `firmware-src/build.sh --release 1.8.2-an2 --identity FM-1_905`, the host tests
 (`firmware-src/tests/run_tests.sh`, with ANDROMEDA's own `tests/andro_test.c`), then the installer
 (`tools/make_installer.py`) and a Release. See [`firmware-src/BUILDING.md`](firmware-src/BUILDING.md) to build it yourself.
 
