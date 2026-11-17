@@ -16,6 +16,8 @@
          font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
   main { max-width: 520px; margin: 0 auto; padding: 48px 16px; }
   h1 { font-size: 24px; font-weight: 600; margin: 0 0 24px; }
+  .don { display:inline-block; font-size:12px; letter-spacing:.08em; color:#f2c879; border:1px solid rgba(242,200,121,.45); border-radius:99px; padding:3px 10px; text-decoration:none; white-space:nowrap }
+  .don:hover { background:rgba(242,200,121,.08) }
   .lang { float: right; font-size: 13px; color: var(--dim); cursor: pointer; text-decoration: underline; background: none; padding: 0; color: var(--dim); }
   p { margin: 0 0 16px; }
   button { font: inherit; background: var(--fg); color: var(--bg); border: 0; padding: 8px 20px; cursor: pointer; }
@@ -30,9 +32,11 @@
 <main>
   <button class="lang" id="lang"></button>
   <h1 style="font-family:Georgia,serif;letter-spacing:.42em;font-weight:300">ANDROMEDA</h1>
-  <p class="small" style="letter-spacing:.12em"><i style="font-family:Georgia,serif;letter-spacing:.04em;font-size:15px">an ambient instrument</i><br>FIRMWARE /*VERSION*/ FOR M-VAVE FM-1 · DARK FUNK DURCAL DESIGN · CREATED AT POLARIS SOUND LAB · MÉRIDA, YUCATÁN, MÉXICO<br>INSTAGRAM <a href="https://www.instagram.com/polaris.sound.lab/" style="color:#c98a55">@polaris.sound.lab</a> · YOUTUBE <a href="https://www.youtube.com/@PolarisSoundLab" style="color:#c98a55">@PolarisSoundLab</a><br>Based on Felucca 1.8.2 (GPL-3.0) by Hügelton Instruments: the texts below are Felucca's installer.</p>
-  <div style="border:1px solid #c2412f;border-radius:8px;padding:10px 12px;margin:0 0 18px;font-size:14px"><b>BEFORE INSTALLING</b><br>1. Use Chrome or Edge on a computer. Connect the FM-1 by USB (a data cable) with a charged battery.<br>2. Back up your projects and sounds with the official workbench.<br>3. Do not unplug or switch off the FM-1 while it writes.<br>4. To go back to stock: open "Return to official firmware" and pick your FM-1.fwsc (V15 or V16).</div>
+  <p class="small" style="letter-spacing:.12em"><i style="font-family:Georgia,serif;letter-spacing:.04em;font-size:15px" data-t="tag"></i><br><span data-t="fwfor"></span> /*VERSION*/ · DARK FUNK DURCAL DESIGN · <span data-t="created"></span> POLARIS SOUND LAB · MÉRIDA, YUCATÁN, MÉXICO<br>INSTAGRAM <a href="https://www.instagram.com/polaris.sound.lab/" style="color:#c98a55">@polaris.sound.lab</a> · YOUTUBE <a href="https://www.youtube.com/@PolarisSoundLab" style="color:#c98a55">@PolarisSoundLab</a><br><span data-t="based"></span></p>
+  <div style="border:1px solid #c2412f;border-radius:8px;padding:10px 12px;margin:0 0 18px;font-size:14px"><b data-t="b0"></b><br><span data-t="b1"></span><br><span data-t="b2"></span><br><span data-t="b3"></span><br><span data-t="b4"></span></div>
+  <p class="small"><span data-t="free"></span> <a class="don" href="https://www.paypal.com/donate/?business=drophlex%40gmail.com&amp;no_recurring=0&amp;item_name=ANDROMEDA&amp;currency_code=USD" target="_blank" rel="noopener" data-t="donate"></a></p>
   <p data-t="intro"></p>
+  <p class="small" data-t="langNote"></p>
   <p data-t="warn"></p>
   <p class="small" data-t="direct"></p>
   <p class="small" data-t="beta"></p>
@@ -735,45 +739,57 @@ class BackupConnection {
 
 const $ = (id) => document.getElementById(id);
 const TEXT = {
-  ja: {
-    intro: "FM-1 を USB で接続してください。（Chrome か Edge で使えます）",
-    warn: "書き込み中は USB を抜かないでください。",
-    install: "インストール", other: "English",
-    editor: "エディタ（インストール後、パソコンから音色やシーケンスを編集）",
-    direct: "USB ケーブルはパソコンに直接つないでください。Probe や Transporter などの機材は不要です。",
-    brick: "万一インストールに失敗して起動しなくなった場合は、復旧に Transporter が必要です:",
-    beta: "Felucca 1.0 は実地テスト版です。不具合は GitHub で知らせてください。このカスタムファームウェアを使ったことで FM-1 が壊れたり不具合が起きたりしても、作者は一切の責任を負いません。自己責任でお使いください。",
-    back: "M-VAVEから公式FM-1 V15かV16を取得し、未変更のFM-1.fwscを選んでください。ファイルはこのブラウザ内で検証し、サーバーへ送りません。",
-    stockTitle: "公式ファームウェア（V15 / V16）に戻す", stockFile: "公式FM-1.fwsc", stockGo: "バックアップして公式ファームウェアへ戻す",
-    stockBackup: "現在の曲・保存曲・音色バンク・サンプル・設定を先に保存します。全体バックアップ非対応版は、Feluccaを更新してから行ってください。復元はFeluccaを再インストールしてエディタから行います。",
-    stockRecovery: "更新中断の再開：全体バックアップはすでにパソコンへ保存済み",
-    stockValid: "公式ファームウェアを確認しました: ", stockConfirm: "全体バックアップファイルをパソコンに保存できましたか？ 続けると公式ファームウェアへ戻します。Feluccaの曲は公式ファームウェアでは開けません。",
-    stockNeedBackup: "書き込みモードからはバックアップできません。保存済みバックアップがある場合だけ、更新中断の再開にチェックしてください。",
-    stockUnsupported: "このFeluccaは全体バックアップに未対応です。先に最新版をインストールしてください。",
-    backup: "全体バックアップ保存中 ", stockError: "公式ファイルを確認できません: ",
-    nomidi: "このブラウザでは使えません。Chrome か Edge で開いてください。", loadfail: "読み込めませんでした: ",
-    start: "開始します", verify: "確認中", loader: "書き込みモードに切り替え中", write: "書き込み中",
-    reboot: "再起動中", done: "完了しました", stopped: "途中で止まりました。USB を挿し直してもう一度押してください。",
-    error: "エラー: ",
-    denied: "MIDI（SysEx）の使用が許可されませんでした。アドレスバーのサイト設定で MIDI を許可して、もう一度押してください。",
-    notfound: "FM-1 が見つかりません。USB ケーブル（データ通信用か）を確かめ、MIDI を使う他のアプリを閉じてから、もう一度押してください。",
-    model: "接続されている機器は FM-1 ではありません。",
-    lost: "USB の接続が切れました。挿し直してもう一度押してください。",
-    noloader: "書き込みモードの FM-1 が見つかりません。USB を挿し直してもう一度押してください（終わるまで書き込みモードのままです）。",
-    noreturn: "FM-1 が戻ってきません。電源を入れ直してください。",
-    mismatch: "書き込みは終わりましたが、FM-1 が別のバージョンを報告しています: ",
-    badpkg: "インストールするファイルが壊れています。ページを再読み込みしてください。",
-    leave: "書き込み中です。ページを閉じないでください。",
-    license: "GPL-3.0、無保証。ソース:",
+  es: {
+    tag: "un instrumento ambient", fwfor: "FIRMWARE PARA M-VAVE FM-1", created: "CREADO EN",
+    based: "Basado en Felucca 1.8.2 (GPL-3.0) de Hügelton Instruments.",
+    b0: "ANTES DE INSTALAR", b1: "1. Usa Chrome o Edge en una computadora. Conecta el FM-1 por USB (cable de datos) con la batería cargada.",
+    b2: "2. Respalda tus proyectos y sonidos con el workbench oficial.", b3: "3. No desconectes ni apagues el FM-1 mientras escribe.",
+    b4: "4. Para volver al original: abre \"Regresar al firmware oficial\" y elige tu FM-1.fwsc (V15 o V16).",
+    intro: "Conecta el FM-1 por USB. (Funciona en Chrome o Edge.)",
+    warn: "No desconectes el cable USB mientras se escribe.",
+    install: "Instalar", other: "English",
+    editor: "Editor (después de instalar: edita sonidos y secuencias desde la computadora)",
+    direct: "Conecta el cable USB directo a la computadora. No necesitas sonda ni Transporter.",
+    brick: "Si una instalación falla y el FM-1 ya no enciende, recuperarlo necesita un Transporter:",
+    beta: "ANDROMEDA es software libre en pruebas de campo; reporta problemas en GitHub. El autor no se hace responsable si tu FM-1 se daña o se comporta mal por este firmware personalizado. Úsalo bajo tu propio riesgo.",
+    back: "Descarga el firmware oficial FM-1 V15 o V16 de M-VAVE y elige el FM-1.fwsc sin modificar. El navegador lo valida aquí mismo; no se envía a ningún servidor.",
+    stockTitle: "Regresar al firmware oficial (V15 / V16)", stockFile: "FM-1.fwsc oficial", stockGo: "Respaldar y regresar al firmware oficial",
+    stockBackup: "Primero se guardan la música actual, la música guardada, los bancos de sonidos, las muestras y los ajustes. Un firmware anterior necesita actualizar Felucca para respaldos completos. Para restaurar un archivo después, reinstala ANDROMEDA y usa el editor.",
+    stockRecovery: "Continuar una actualización interrumpida: ya guardé un respaldo completo en esta computadora",
+    stockValid: "Firmware oficial verificado: ", stockConfirm: "¿Ya se guardó el respaldo completo en esta computadora? Continúa para regresar al firmware oficial. El firmware oficial no puede abrir música de ANDROMEDA.",
+    stockNeedBackup: "El cargador de actualización no puede exportar un respaldo. Elige continuar solo si ya guardaste un respaldo completo.",
+    stockUnsupported: "Este firmware no permite respaldos completos. Instala primero la versión actual.",
+    backup: "Guardando respaldo completo ", stockError: "No se puede validar el firmware oficial: ",
+    nomidi: "Este navegador no puede hacerlo. Abre la página en Chrome o Edge.", loadfail: "No se pudo cargar: ",
+    start: "Iniciando", verify: "Verificando", loader: "Cambiando a modo de actualización", write: "Escribiendo",
+    reboot: "Reiniciando", done: "Listo", stopped: "Detenido. Vuelve a conectar el cable USB y presiona Instalar otra vez.",
+    error: "Error: ",
+    denied: "No se permitió el acceso MIDI (SysEx). Permite MIDI en los ajustes del sitio (barra de direcciones) y presiona Instalar otra vez.",
+    notfound: "No se encontró el FM-1. Revisa el cable USB (que sea de datos), cierra otras apps que usen MIDI y presiona Instalar otra vez.",
+    model: "El aparato conectado no es un FM-1.",
+    lost: "Se perdió la conexión USB. Vuelve a conectarlo y presiona Instalar otra vez.",
+    noloader: "No se encontró el FM-1 en modo de actualización. Vuelve a conectar el cable USB y presiona Instalar otra vez (se queda en modo de actualización hasta terminar).",
+    noreturn: "El FM-1 no regresó. Apágalo y vuelve a encenderlo.",
+    mismatch: "Escrito, pero el FM-1 reporta otra versión: ",
+    badpkg: "El archivo a instalar está dañado. Recarga la página.",
+    leave: "Escribiendo. No cierres la página.",
+    license: "GPL-3.0, sin garantía. Código:",
+    donate: "♥ Donar con PayPal", free: "ANDROMEDA es gratis y de código abierto. Si te gusta, puedes apoyarlo:",
+    langNote: "Después de instalar, la pantalla está en inglés: en la página VISION gira K4 (LANG) a ES para verla en español.",
   },
   en: {
+    tag: "an ambient instrument", fwfor: "FIRMWARE FOR M-VAVE FM-1", created: "CREATED AT",
+    based: "Based on Felucca 1.8.2 (GPL-3.0) by Hügelton Instruments.",
+    b0: "BEFORE INSTALLING", b1: "1. Use Chrome or Edge on a computer. Connect the FM-1 by USB (a data cable) with a charged battery.",
+    b2: "2. Back up your projects and sounds with the official workbench.", b3: "3. Do not unplug or switch off the FM-1 while it writes.",
+    b4: "4. To go back to stock: open \"Return to official firmware\" and pick your FM-1.fwsc (V15 or V16).",
     intro: "Connect the FM-1 by USB. (Works in Chrome or Edge.)",
     warn: "Do not unplug the USB cable while writing.",
-    install: "Install", other: "日本語",
+    install: "Install", other: "Español",
     editor: "Editor (after installing: edit sounds and sequences from the computer)",
     direct: "Connect the USB cable directly to the computer. No probe or Transporter is needed.",
     brick: "If an install fails and the FM-1 no longer starts, recovering it needs a Transporter:",
-    beta: "Felucca 1.0 is a field-testing release; please report problems on GitHub. The author accepts no responsibility if your FM-1 is damaged or misbehaves because of this custom firmware. Use it at your own risk.",
+    beta: "ANDROMEDA is free software in field testing; please report problems on GitHub. The author accepts no responsibility if your FM-1 is damaged or misbehaves because of this custom firmware. Use it at your own risk.",
     back: "Get official FM-1 V15 or V16 from M-VAVE and select the unmodified FM-1.fwsc. The browser validates it locally; it is not sent to a server.",
     stockTitle: "Return to official firmware (V15 / V16)", stockFile: "Official FM-1.fwsc", stockGo: "Back up and return to official firmware",
     stockBackup: "Current music, saved music, sound banks, samples and settings are saved first. Older firmware needs a Felucca update for complete backups. To restore an archive later, reinstall Felucca and use the editor.",
@@ -796,9 +812,11 @@ const TEXT = {
     badpkg: "The file to install is damaged. Reload the page.",
     leave: "Writing. Do not close the page.",
     license: "GPL-3.0, no warranty. Source:",
+    donate: "♥ Donate with PayPal", free: "ANDROMEDA is free and open source. If you enjoy it, you can support it:",
+    langNote: "After installing, the screen is in English; on the VISION page turn K4 (LANG) to ES for Spanish.",
   },
 };
-let lang = (navigator.language || "en").toLowerCase().startsWith("ja") ? "ja" : "en";
+let lang = "en";   // English unless Español is chosen
 const t = (k) => TEXT[lang][k];
 let lastKey = null, lastArg = "";
 function applyLang() {
@@ -807,7 +825,7 @@ function applyLang() {
   $("lang").textContent = t("other");
   if (lastKey) $("status").textContent = t(lastKey) + lastArg;
 }
-$("lang").addEventListener("click", () => { lang = lang === "ja" ? "en" : "ja"; applyLang(); });
+$("lang").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; applyLang(); });
 applyLang();
 const sayK = (k, arg = "") => { lastKey = k; lastArg = arg; $("status").textContent = t(k) + arg; };
 const say = (txt) => { lastKey = null; $("status").textContent = txt; };

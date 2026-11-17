@@ -135,9 +135,28 @@ static int sky_tape(void)
     return bad;
 }
 
+static int lang(void)
+{
+    int bad = 0, ok;
+    uint32_t i;
+    for (i = 1; i < LANG_N; i++)                          /* (sorted, one entry a key: lang_tr's binary search) */
+        if (lang_cmp(LANG_ES[i - 1u].en, LANG_ES[i].en) >= 0) break;
+    ok = i == LANG_N && lang_es == 0 && !strcmp(lang_tr("SAVE"), "SAVE");
+    an_knob(GR_AN_VISION, 3, 1);                          /* VISION > K4 LANG: ES */
+    ok &= lang_es == 1 && (ui_idle & 0x80u) && !strcmp(lang_tr("SAVE"), "SALVA") && !strcmp(lang_tr("MY LONG BASS"), "MY LONG BASS");
+    ui_say("SHIFT TO ", "D");
+    ok &= !strcmp(ui.msg, "CAMBIO A D") && text_w(&AF_S, "ALIGN") == text_w(&AF_S, "ALINEAR");
+    andro_poll();
+    ok &= lang_es == 1;                                   /* (the settings' bit read back) */
+    an_knob(GR_AN_VISION, 3, -1);                         /* EN again */
+    ok &= lang_es == 0 && !(ui_idle & 0x80u) && !strcmp(lang_tr("SAVE"), "SAVE");
+    bad += check("LANG: VISION K4 EN / ES, kept in the settings; the screen and messages in Spanish, names untouched", ok);
+    return bad;
+}
+
 int main(void)
 {
-    int bad = align_all() + shift() + autov() + sky_tape();
+    int bad = align_all() + shift() + autov() + sky_tape() + lang();
     printf("%s\n", bad ? "ANDROMEDA TEST FAILED" : "andromeda tests passed");
     return bad != 0;
 }

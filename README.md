@@ -1,19 +1,32 @@
 <h1 align="center">ANDROMEDA · FM-1</h1>
-<p align="center"><i>an ambient instrument</i> — firmware for the M-VAVE FM-1<br>
+<p align="center"><i>an ambient instrument</i> — free, open-source firmware for the M-VAVE FM-1<br>
 Dark Funk Durcal design · Created at <b>Polaris Sound Lab</b>, Mérida, Yucatán, México<br>
 <a href="https://www.instagram.com/polaris.sound.lab/">Instagram @polaris.sound.lab</a> · <a href="https://www.youtube.com/@PolarisSoundLab">YouTube @PolarisSoundLab</a></p>
+
+<p align="center">
+<a href="https://drophlex.github.io/ANDROMEDA/fm1/"><b>🎛 Install it</b></a> &nbsp;·&nbsp;
+<a href="https://drophlex.github.io/ANDROMEDA/guide/#fm1"><b>✦ Quick guide</b></a> &nbsp;·&nbsp;
+<a href="manual/ANDROMEDA-FM1-Manual-EN-ES.pdf"><b>📘 Manual EN + ES</b></a> &nbsp;·&nbsp;
+<a href="https://www.paypal.com/donate/?business=drophlex%40gmail.com&no_recurring=0&item_name=ANDROMEDA&currency_code=USD"><b>♥ Donate</b></a>
+</p>
 
 <p align="center"><img src="docs/images/fm1_pages.png" width="760" alt="ANDROMEDA on the FM-1: ALIGN, AUTO, KEYS, SKY, SPACE TAPE, VISION"></p>
 
 **English** · [Español](#español)
 
-## ⬇ Get it
+## ⚡ Quick guide
+
+1. **Connect** the FM-1 (battery charged) to a computer with a USB-C **data** cable. Open **[the installer](https://drophlex.github.io/ANDROMEDA/fm1/)** in **Chrome or Edge**.
+2. **Install**: press *Install*, allow MIDI, and don't unplug while it says *Writing* (about 5 minutes). The official firmware can always go back from the same page.
+3. **Play**: press **HOME** until **ALIGN**, choose a mood with **K1**, press **OCT+**, then **PLAY**. Go to **AUTO** and turn **K1** on: the music keeps growing by itself.
+4. **Español**: the screen is in English; on the **VISION** page turn **K4 (LANG)** to **ES** and the whole screen reads in Spanish. The FM-1 remembers it.
 
 | | |
 |---|---|
-| 🎛 **Installer** | [`install/ANDROMEDA-FM1-Installer.html`](install/ANDROMEDA-FM1-Installer.html) or the latest [Release](https://github.com/drophlex/ANDROMEDAFM1/releases/latest). Open it in **Chrome or Edge**, FM-1 on a USB-C **data** cable, press **Install**. |
-| 📘 **Manual** | [English + Español (PDF)](manual/ANDROMEDA-FM1-Manual-EN-ES.pdf) · [Solo español (PDF)](manual/ANDROMEDA-FM1-Manual-ES.pdf) — every step from installing to playing, with pictures. |
-| 🌐 **Web, Mac app, Ableton plug-in** | the same instrument on a computer: [drophlex/ANDROMEDA](https://github.com/drophlex/ANDROMEDA) |
+| 🎛 **Installer** | [drophlex.github.io/ANDROMEDA/fm1](https://drophlex.github.io/ANDROMEDA/fm1/) · also in [`install/`](install/) and every [Release](https://github.com/drophlex/ANDROMEDAFM1/releases/latest) |
+| 📘 **Manual** | [English + Español (PDF)](manual/ANDROMEDA-FM1-Manual-EN-ES.pdf) · [Solo español (PDF)](manual/ANDROMEDA-FM1-Manual-ES.pdf) — from installing to every page, with pictures |
+| 🌐 **Web, Mac app, Ableton plug-in** | the same instrument on a computer: [drophlex.github.io/ANDROMEDA](https://drophlex.github.io/ANDROMEDA/) · [source](https://github.com/drophlex/ANDROMEDA) |
+| ♥ **Free & open source** | GPL-3.0. If it brings you good moments: [donate with PayPal](https://www.paypal.com/donate/?business=drophlex%40gmail.com&no_recurring=0&item_name=ANDROMEDA&currency_code=USD) |
 
 ## What it does
 
@@ -28,10 +41,10 @@ six pages after HOME › MIXER › CLOCK (press **HOME** to go through them; **O
 | **KEYS** | MODE (RAW / SNAP / SHIFT) · KEY · SCALE · ANSWER | **APPLY** the key to every track. SHIFT: play a note outside the scale and the whole song moves to the nearest scale on the next beat. ANSWER: the bells answer what you play. |
 | **SKY** | DRIFT · HAZE · BLOOM · GRAVITY | **ECLIPSE**: the beat sinks into the echoes (again: it returns). |
 | **SPACE TAPE** | MODE 1–12 (three heads, spring) · RATE · INTENSITY · WOW | **FREEZE** |
-| **VISION** | CYMATICS · HARMONOGRAPH · ATTRACTOR · ORRERY | next vision |
+| **VISION** | K1 CYMATICS · HARMONOGRAPH · ATTRACTOR · ORRERY · K4 **LANG** (EN / ES) | next vision |
 
 Also: 6 new ambient sounds on ANALOG (POLAR PAD, PWM DREAM, GLASS PAD, WARM PULSE, SUB GRAVITY, DREAM SAW), a 32-voice FM bank
-(FM6 SLOT B1–B32), the COSMOS colours (MENU › THEME), a harmonograph on HOME and at power-on.
+(FM6 SLOT B1–B32), the COSMOS colours (MENU › COLOR), a harmonograph on HOME and at power-on.
 
 ## Build it
 
@@ -63,8 +76,11 @@ es la acción de cada página):
   en el siguiente tiempo. ANSWER: las campanas contestan lo que tocas.
 - **SKY**: DRIFT, HAZE, BLOOM, GRAVITY; **OCT+** ECLIPSE.
 - **SPACE TAPE**: el eco de cinta de tres cabezas con resorte, 12 modos; **OCT+** FREEZE.
-- **VISION**: cimática, harmonógrafo, atractor y órbitas dibujados con la música.
+- **VISION**: cimática, armonógrafo, atractor y órbitas dibujados con la música. **K4 (LANG)** pone toda la pantalla en español.
 
-**Instalar:** abre [`install/ANDROMEDA-FM1-Installer.html`](install/ANDROMEDA-FM1-Installer.html) en Chrome o Edge con el FM-1
+**Instalar:** abre [el instalador](https://drophlex.github.io/ANDROMEDA/fm1/) en Chrome o Edge con el FM-1
 conectado por un cable USB-C de **datos**, presiona **Install**, permite el MIDI y no lo desconectes mientras dice *Writing*.
 El [manual](manual/ANDROMEDA-FM1-Manual-ES.pdf) trae cada paso con imágenes.
+
+
+**Gratis y de código abierto** (GPL-3.0). Si te gusta, puedes apoyarlo: [♥ donar con PayPal](https://www.paypal.com/donate/?business=drophlex%40gmail.com&no_recurring=0&item_name=ANDROMEDA&currency_code=USD).

@@ -468,6 +468,8 @@ static uint32_t page_first(uint32_t fam)
 static void ui_say(const char *a, const char *b)
 {
     uint32_t n;
+    a = lang_tr(a);                                    /* ANDROMEDA: each part in Spanish when LANG is ES */
+    b = lang_tr(b);
     str_cpy(ui.msg, a, sizeof ui.msg);
     n = str_len(ui.msg);
     str_cpy(ui.msg + n, b, sizeof ui.msg - n);

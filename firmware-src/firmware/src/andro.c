@@ -532,6 +532,7 @@ static void an_tape_set(void)
 static void andro_poll(void)
 {
     uint32_t h = an_heard, beat = beat_n;
+    lang_es = (uint8_t)(ui_idle >> 7);               /* LANG (VISION K4), as the settings hold it */
     if (h) {
         an_heard = 0;
         h--;
@@ -634,6 +635,14 @@ static void an_knob(uint32_t g, uint32_t slot, int32_t steps)
         if (slot == 3u) { song.g[G_DRREV] = (int16_t)an_step(song.g[G_DRREV], steps * 2, 0, 127); an.drift = (int8_t)(song.g[G_DRREV] * 100 / 127); }
     } else {
         if (slot == 0u) an.vision = (uint8_t)an_step(an.vision, one, 0, 3);
+        if (slot == 3u) {                            /* LANG: EN / ES, the whole screen (lang.c), kept in the settings */
+            uint32_t es = steps > 0 ? 1u : 0u;
+            if (es != lang_es) {
+                lang_es = (uint8_t)es;
+                ui_idle = (uint8_t)(es ? ui_idle | 0x80u : ui_idle & 0x7Fu);
+                settings_later();
+            }
+        }
     }
     ui.force = 1;
 }
@@ -917,7 +926,7 @@ static void an_columns(uint32_t g)
         draw_column(0, "VISION", AN_VIS_K[an.vision & 3u], "", VAL(0u), (int32_t)an.vision * 333, ICON_AUTO);
         draw_column(1, "-", "", "", VAL(1u), -1, ICON_AUTO);
         draw_column(2, "-", "", "", VAL(2u), -1, ICON_AUTO);
-        draw_column(3, "-", "", "", VAL(3u), -1, ICON_AUTO);
+        draw_column(3, "LANG", lang_es ? "ES" : "EN", "", VAL(3u), lang_es ? 1000 : 0, ICON_AUTO);
     }
 }
 static uint32_t an_sig(void)

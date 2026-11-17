@@ -60,7 +60,7 @@ static const struct { const char *title, *hint; } HELP_PAGE[] = {
     {"KEYS", "[K1]RAW SNAP SHIFT[OCT+]APPLY"},
     {"SKY", "[K1-4]MACROS[OCT+]ECLIPSE"},
     {"SPACE TAPE", "[K1]MODE 1-12[OCT+]FREEZE"},
-    {"VISION", "[K1]VISION[OCT+]NEXT"},
+    {"VISION", "[K1]VISION[K4]LANG[OCT+]NEXT"},
 };
 #define H_HOME "[PRESETS]SOUND[HOME]HOLD: MENU"
 #define H_LEVELS "[K1-4]T1-T4 LEVEL[HOME]MIXER"
