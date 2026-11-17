@@ -69,7 +69,11 @@ jobs:
           files: |
             install/ANDROMEDA-FM1-Installer.html
             install/ANDROMEDA-FM1-${{ env.VERSION }}.fwsc
+            manual/ANDROMEDA-FM1-Manual-EN-ES.pdf
+            manual/ANDROMEDA-FM1-Manual-ES.pdf
+            manual/ANDROMEDA-Manual-Completo-EN-ES.pdf
+            manual/ANDROMEDA-Manual-Completo-ES.pdf
           body: |
             ANDROMEDA — an ambient instrument · Dark Funk Durcal design · Polaris Sound Lab
             Download ANDROMEDA-FM1-Installer.html, open it in Chrome or Edge with the FM-1 on USB and press Install.
-            The manual (English / Español) is in the repository's manual/ folder.
+            Manuals / Manuales (PDF): ANDROMEDA-FM1-Manual-EN-ES.pdf (FM-1, English + Español), ANDROMEDA-Manual-Completo-EN-ES.pdf (everything: web, Mac, Ableton and FM-1). Solo español: the -ES.pdf files.

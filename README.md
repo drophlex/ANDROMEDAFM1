@@ -24,7 +24,8 @@ Dark Funk Durcal design · Created at <b>Polaris Sound Lab</b>, Mérida, Yucatá
 | | |
 |---|---|
 | 🎛 **Installer** | [drophlex.github.io/ANDROMEDA/fm1](https://drophlex.github.io/ANDROMEDA/fm1/) · also in [`install/`](install/) and every [Release](https://github.com/drophlex/ANDROMEDAFM1/releases/latest) |
-| 📘 **Manual** | [English + Español (PDF)](manual/ANDROMEDA-FM1-Manual-EN-ES.pdf) · [Solo español (PDF)](manual/ANDROMEDA-FM1-Manual-ES.pdf) — from installing to every page, with pictures |
+| 📘 **Manual** | FM-1: [English + Español](manual/ANDROMEDA-FM1-Manual-EN-ES.pdf) · [Solo español](manual/ANDROMEDA-FM1-Manual-ES.pdf) — from installing to every page, with pictures |
+| 📚 **Complete manual** | web, Mac, Ableton **and** FM-1: [English + Español](manual/ANDROMEDA-Manual-Completo-EN-ES.pdf) · [Solo español](manual/ANDROMEDA-Manual-Completo-ES.pdf) |
 | 🌐 **Web, Mac app, Ableton plug-in** | the same instrument on a computer: [drophlex.github.io/ANDROMEDA](https://drophlex.github.io/ANDROMEDA/) · [source](https://github.com/drophlex/ANDROMEDA) |
 | ♥ **Free & open source** | GPL-3.0. If it brings you good moments: [donate with PayPal](https://www.paypal.com/donate/?business=drophlex%40gmail.com&no_recurring=0&item_name=ANDROMEDA&currency_code=USD) |
 
