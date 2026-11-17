@@ -1,0 +1,75 @@
+name: Build ANDROMEDA for the FM-1
+on:
+  push:
+    branches: [main]
+    paths: ['firmware-src/**', 'tools/**', '.github/workflows/build.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+env:
+  VERSION: 1.8.2-an1
+  IDENTITY: FM-1_947
+jobs:
+  firmware:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Tools (Pillow, fontTools; the JieLi toolchain)
+        run: |
+          pip install Pillow fonttools
+          sh firmware-src/tools/get_toolchain.sh "$HOME/.jieli"
+      - name: Three files of the JieLi AC79 SDK (Apache-2.0)
+        run: |
+          set -e
+          for url in https://github.com/Jieli-Tech/fw-AC79_AIoT_SDK.git https://gitee.com/Jieli-Tech/fw-AC79_AIoT_SDK.git; do
+            rm -rf "$HOME/sdk"
+            if git clone --depth 1 --filter=blob:none --sparse --branch AC79NN_SDK_V1.2.1_2023-12-13 "$url" "$HOME/sdk"; then
+              git -C "$HOME/sdk" sparse-checkout set cpu/wl82/tools && break
+            fi
+          done
+          ls -la "$HOME/sdk/cpu/wl82/tools/uboot.boot" "$HOME/sdk/cpu/wl82/tools/cfg_tool.bin" "$HOME/sdk/cpu/wl82/tools/cfg/eq_cfg_hw.bin"
+      - name: Build
+        working-directory: firmware-src
+        run: |
+          export JIELI_TOOLCHAIN="$HOME/.jieli/toolchain" AC79_SDK="$HOME/sdk"
+          ./build.sh --release "$VERSION" --identity "$IDENTITY"
+      - name: Host tests (UI, audio, sequencer, storage; the screens rendered)
+        working-directory: firmware-src
+        run: |
+          export AC79_SDK="$HOME/sdk"
+          cp build/felucca-$VERSION.fwsc build/felucca.fwsc   # (the tests read the package by this name)
+          sh tests/run_tests.sh
+      - name: Installer
+        run: |
+          mkdir -p install
+          cp firmware-src/build/felucca-$VERSION.fwsc install/ANDROMEDA-FM1-$VERSION.fwsc
+          python3 tools/make_installer.py install/ANDROMEDA-FM1-$VERSION.fwsc "$VERSION" "$IDENTITY" install/ANDROMEDA-FM1-Installer.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ANDROMEDA-FM1-${{ env.VERSION }}
+          path: |
+            install/
+            firmware-src/build/release-${{ env.VERSION }}/
+            firmware-src/build/ui_new/sheet_COSMOS.png
+      - name: Keep the installer in the repository (for the web link)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add install/
+          git commit -m "Installer ANDROMEDA $VERSION for the FM-1 (built by CI)" || exit 0
+          git push
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}-r${{ github.run_number }}
+          name: ANDROMEDA ${{ env.VERSION }} for the M-VAVE FM-1
+          make_latest: true
+          files: |
+            install/ANDROMEDA-FM1-Installer.html
+            install/ANDROMEDA-FM1-${{ env.VERSION }}.fwsc
+          body: |
+            ANDROMEDA — an ambient instrument · Dark Funk Durcal design · Polaris Sound Lab
+            Download ANDROMEDA-FM1-Installer.html, open it in Chrome or Edge with the FM-1 on USB and press Install.
+            The manual (English / Español) is in the repository's manual/ folder.
